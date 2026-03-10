@@ -1,4 +1,13 @@
 export default async function handler(req, res) {
+  // CORS
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   try {
     const query = req.query.query;
 
@@ -318,7 +327,7 @@ export default async function handler(req, res) {
     while (weaknesses.length < 3) weaknesses.push("Aucune faiblesse majeure supplémentaire ne ressort avec les données actuelles.");
     while (risks.length < 3) risks.push("Aucun risque critique supplémentaire n’est visible avec les données actuelles.");
 
-    const payload = {
+    return res.status(200).json({
       symbol,
       currency: profile.currency || "USD",
       profile,
@@ -353,9 +362,7 @@ export default async function handler(req, res) {
         peRatio,
         fcf
       })
-    };
-
-    return res.status(200).json(payload);
+    });
   } catch (error) {
     return res.status(500).json({
       error: "Erreur backend",
