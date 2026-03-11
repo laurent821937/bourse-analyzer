@@ -1,3 +1,5 @@
+import { PRELOADED_ANALYSES } from "../data/preloaded-analyses.js";
+
 const ANALYZE_CACHE = {};
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
@@ -16,6 +18,14 @@ export default async function handler(req, res) {
 
     if (!rawQuery && !rawSymbol) {
       return res.status(400).json({ error: "Query ou symbol manquant" });
+    }
+
+    const preloadedKey = rawSymbol || "";
+    if (preloadedKey && PRELOADED_ANALYSES[preloadedKey]) {
+      return res.status(200).json({
+        ...PRELOADED_ANALYSES[preloadedKey],
+        source: "preloaded"
+      });
     }
 
     const apiKey = process.env.FMP_API_KEY;
@@ -118,6 +128,13 @@ export default async function handler(req, res) {
       symbol = preferred.symbol;
     }
 
+    if (PRELOADED_ANALYSES[symbol]) {
+      return res.status(200).json({
+        ...PRELOADED_ANALYSES[symbol],
+        source: "preloaded"
+      });
+    }
+
     const cacheKey = symbol.toUpperCase();
     const now = Date.now();
 
@@ -127,7 +144,7 @@ export default async function handler(req, res) {
     ) {
       return res.status(200).json({
         ...ANALYZE_CACHE[cacheKey].data,
-        cache: true
+        source: "cache"
       });
     }
 
@@ -367,7 +384,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       ...result,
-      cache: false
+      source: "api"
     });
   } catch (error) {
     return res.status(500).json({
