@@ -1,8 +1,4 @@
-const SEARCH_CACHE = {
-  loadedAt: 0,
-  data: []
-};
-
+const SEARCH_CACHE = {};
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
 export default async function handler(req, res) {
@@ -15,8 +11,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const q = String(req.query.q || "").trim().toLowerCase();
-    const limit = Math.min(Number(req.query.limit || 8), 20);
+    const q = String(req.query.q || "").trim();
+    const limit = Math.min(Number(req.query.limit || 8), 10);
 
     if (!q || q.length < 2) {
       return res.status(200).json({
@@ -25,75 +21,63 @@ export default async function handler(req, res) {
       });
     }
 
+    const cacheKey = q.toLowerCase();
+    const now = Date.now();
+
+    if (
+      SEARCH_CACHE[cacheKey] &&
+      now - SEARCH_CACHE[cacheKey].createdAt < ONE_DAY
+    ) {
+      return res.status(200).json({
+        results: SEARCH_CACHE[cacheKey].results,
+        source: "cache"
+      });
+    }
+
     const apiKey = process.env.FMP_API_KEY;
     if (!apiKey) {
       return res.status(500).json({ error: "Clé API FMP absente côté serveur" });
     }
 
-    const now = Date.now();
-    const cacheExpired = now - SEARCH_CACHE.loadedAt > ONE_DAY || !SEARCH_CACHE.data.length;
+    const url = new URL("https://financialmodelingprep.com/stable/search-name");
+    url.searchParams.set("query", q);
+    url.searchParams.set("limit", String(limit));
+    url.searchParams.set("apikey", apiKey);
 
-    if (cacheExpired) {
-      const url = `https://financialmodelingprep.com/stable/financial-statement-symbol-list?apikey=${apiKey}`;
-      const response = await fetch(url);
-      const text = await response.text();
+    const response = await fetch(url.toString());
+    const text = await response.text();
 
-      if (!response.ok) {
-        throw new Error(`FMP ${response.status}: ${text}`);
-      }
-
-      let raw;
-      try {
-        raw = JSON.parse(text);
-      } catch {
-        throw new Error(`Réponse FMP invalide: ${text}`);
-      }
-
-      const filtered = (Array.isArray(raw) ? raw : [])
-        .filter(item => {
-          const ex = String(item.exchangeShortName || item.exchange || "").toUpperCase();
-          return ex === "NASDAQ" || ex === "NYSE" || ex === "AMEX";
-        })
-        .map(item => ({
-          symbol: item.symbol || "",
-          name: item.name || item.companyName || "",
-          exchange: item.exchangeShortName || item.exchange || "",
-          type: item.type || ""
-        }))
-        .filter(item => item.symbol && item.name);
-
-      SEARCH_CACHE.data = filtered;
-      SEARCH_CACHE.loadedAt = now;
+    if (!response.ok) {
+      throw new Error(`FMP ${response.status}: ${text}`);
     }
 
-    const results = SEARCH_CACHE.data
+    let raw;
+    try {
+      raw = JSON.parse(text);
+    } catch {
+      throw new Error(`Réponse FMP invalide: ${text}`);
+    }
+
+    const results = (Array.isArray(raw) ? raw : [])
       .filter(item => {
-        const name = item.name.toLowerCase();
-        const symbol = item.symbol.toLowerCase();
-        return name.includes(q) || symbol.includes(q);
+        const ex = String(item.exchangeShortName || item.exchange || "").toUpperCase();
+        return ex === "NASDAQ" || ex === "NYSE" || ex === "AMEX";
       })
-      .sort((a, b) => {
-        const aName = a.name.toLowerCase();
-        const bName = b.name.toLowerCase();
-        const aSymbol = a.symbol.toLowerCase();
-        const bSymbol = b.symbol.toLowerCase();
+      .map(item => ({
+        symbol: item.symbol || "",
+        name: item.name || item.companyName || "",
+        exchange: item.exchangeShortName || item.exchange || ""
+      }))
+      .filter(item => item.symbol && item.name);
 
-        const aExact = aName === q || aSymbol === q ? 1 : 0;
-        const bExact = bName === q || bSymbol === q ? 1 : 0;
-        if (aExact !== bExact) return bExact - aExact;
-
-        const aStarts = aName.startsWith(q) || aSymbol.startsWith(q) ? 1 : 0;
-        const bStarts = bName.startsWith(q) || bSymbol.startsWith(q) ? 1 : 0;
-        if (aStarts !== bStarts) return bStarts - aStarts;
-
-        return a.name.localeCompare(b.name);
-      })
-      .slice(0, limit);
+    SEARCH_CACHE[cacheKey] = {
+      createdAt: now,
+      results
+    };
 
     return res.status(200).json({
       results,
-      source: "cached-list",
-      totalLoaded: SEARCH_CACHE.data.length
+      source: "api"
     });
   } catch (error) {
     return res.status(500).json({
