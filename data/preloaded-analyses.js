@@ -328,3 +328,4 @@ const PRELOADED_ANALYSES = {
   verdict: "Cette entreprise obtient un score de 58/100, ce qui correspond à un profil moyenne. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
   source: "api"
 },
+ };
