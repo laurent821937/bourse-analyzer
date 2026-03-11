@@ -1,3 +1,6 @@
+const ANALYZE_CACHE = {};
+const ONE_DAY = 24 * 60 * 60 * 1000;
+
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
@@ -8,10 +11,11 @@ export default async function handler(req, res) {
   }
 
   try {
-    const query = req.query.query;
+    const rawQuery = String(req.query.query || "").trim();
+    const rawSymbol = String(req.query.symbol || "").trim().toUpperCase();
 
-    if (!query || !String(query).trim()) {
-      return res.status(400).json({ error: "Query manquante" });
+    if (!rawQuery && !rawSymbol) {
+      return res.status(400).json({ error: "Query ou symbol manquant" });
     }
 
     const apiKey = process.env.FMP_API_KEY;
@@ -95,21 +99,37 @@ export default async function handler(req, res) {
       return "Fragile";
     }
 
-    const search = await fmp("/search-name", {
-      query,
-      limit: 10
-    });
+    let symbol = rawSymbol;
 
-    if (!Array.isArray(search) || !search.length) {
-      return res.status(404).json({ error: "Entreprise introuvable" });
+    if (!symbol) {
+      const search = await fmp("/search-name", {
+        query: rawQuery,
+        limit: 10
+      });
+
+      if (!Array.isArray(search) || !search.length) {
+        return res.status(404).json({ error: "Entreprise introuvable" });
+      }
+
+      const preferred =
+        search.find(x => ["NASDAQ", "NYSE", "AMEX"].includes((x.exchangeShortName || x.exchange || "").toUpperCase())) ||
+        search[0];
+
+      symbol = preferred.symbol;
     }
 
-    // FMP gratuit: on privilégie les sociétés US / NYSE / NASDAQ
-    const preferred =
-      search.find(x => ["NASDAQ", "NYSE", "AMEX"].includes((x.exchangeShortName || x.exchange || "").toUpperCase())) ||
-      search[0];
+    const cacheKey = symbol.toUpperCase();
+    const now = Date.now();
 
-    const symbol = preferred.symbol;
+    if (
+      ANALYZE_CACHE[cacheKey] &&
+      now - ANALYZE_CACHE[cacheKey].createdAt < ONE_DAY
+    ) {
+      return res.status(200).json({
+        ...ANALYZE_CACHE[cacheKey].data,
+        cache: true
+      });
+    }
 
     const [profileRaw, incomeRaw, balanceRaw, cashRaw] = await Promise.all([
       fmp("/profile", { symbol }),
@@ -156,7 +176,7 @@ export default async function handler(req, res) {
 
     const price = n(profile.price);
     const marketCap = n(profile.mktCap || profile.marketCap);
-    const shares = n(profile.volAvg ? null : null) || n(profile.sharesOutstanding);
+    const shares = n(profile.sharesOutstanding);
 
     const revenueGrowth1Y =
       revenue !== null && prevRevenue !== null && prevRevenue > 0
@@ -174,6 +194,7 @@ export default async function handler(req, res) {
 
     const roe = pct(netIncome, equity);
     const roa = pct(netIncome, totalAssets);
+
     const currentRatio =
       currentAssets !== null && currentLiabilities !== null && currentLiabilities !== 0
         ? currentAssets / currentLiabilities
@@ -190,6 +211,7 @@ export default async function handler(req, res) {
         : null;
 
     const fcfMargin = pct(freeCashFlow, revenue);
+
     const cashConversion =
       operatingCashFlow !== null && netIncome !== null && netIncome !== 0
         ? operatingCashFlow / netIncome
@@ -308,9 +330,7 @@ export default async function handler(req, res) {
     while (weaknesses.length < 3) weaknesses.push("Aucune faiblesse critique supplémentaire ne ressort à ce stade.");
     while (risks.length < 3) risks.push("Aucun risque critique supplémentaire n’est visible avec les données disponibles.");
 
-    const verdict = `Cette entreprise obtient un score de ${finalScore}/100, ce qui correspond à un profil ${verdictLabel(finalScore).toLowerCase()}. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.`;
-
-    return res.status(200).json({
+    const result = {
       symbol,
       currency: profile.currency || "USD",
       profile,
@@ -337,7 +357,17 @@ export default async function handler(req, res) {
       strengths: strengths.slice(0, 5),
       weaknesses: weaknesses.slice(0, 5),
       risks: risks.slice(0, 5),
-      verdict
+      verdict: `Cette entreprise obtient un score de ${finalScore}/100, ce qui correspond à un profil ${verdictLabel(finalScore).toLowerCase()}. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.`
+    };
+
+    ANALYZE_CACHE[cacheKey] = {
+      createdAt: now,
+      data: result
+    };
+
+    return res.status(200).json({
+      ...result,
+      cache: false
     });
   } catch (error) {
     return res.status(500).json({
