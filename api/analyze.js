@@ -1,4 +1,44 @@
-import { PRELOADED_ANALYSES } from "../data/preloaded-analyses.js";
+const PRELOADED_ANALYSES = {
+  // Exemple :
+  // "AAPL": {
+  //   symbol: "AAPL",
+  //   currency: "USD",
+  //   profile: {
+  //     companyName: "Apple Inc.",
+  //     symbol: "AAPL",
+  //     exchangeShortName: "NASDAQ",
+  //     country: "US",
+  //     sector: "Technology",
+  //     industry: "Consumer Electronics",
+  //     price: 0,
+  //     mktCap: 0
+  //   },
+  //   metrics: {
+  //     revenueGrowth1Y: 0,
+  //     revenueCagr3Y: 0,
+  //     netMargin: 0,
+  //     roe: 0,
+  //     roa: 0,
+  //     currentRatio: 0,
+  //     debtEquity: 0,
+  //     fcf: 0,
+  //     peRatio: 0
+  //   },
+  //   scores: {
+  //     global: 0,
+  //     growth: 0,
+  //     profitability: 0,
+  //     cashflow: 0,
+  //     balance: 0,
+  //     valuation: 0,
+  //     quality: 0
+  //   },
+  //   strengths: [],
+  //   weaknesses: [],
+  //   risks: [],
+  //   verdict: ""
+  // }
+};
 
 const ANALYZE_CACHE = {};
 const ONE_DAY = 24 * 60 * 60 * 1000;
@@ -20,10 +60,9 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Query ou symbol manquant" });
     }
 
-    const preloadedKey = rawSymbol || "";
-    if (preloadedKey && PRELOADED_ANALYSES[preloadedKey]) {
+    if (rawSymbol && PRELOADED_ANALYSES[rawSymbol]) {
       return res.status(200).json({
-        ...PRELOADED_ANALYSES[preloadedKey],
+        ...PRELOADED_ANALYSES[rawSymbol],
         source: "preloaded"
       });
     }
