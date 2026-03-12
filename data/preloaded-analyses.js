@@ -328,4 +328,657 @@ const PRELOADED_ANALYSES = {
   verdict: "Cette entreprise obtient un score de 58/100, ce qui correspond à un profil moyenne. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
   source: "api"
 }
+ GOOGL: {
+  symbol: "GOOGL",
+  price: 303.1999,
+  marketCap: 3667809585672.9995,
+  beta: 1.112,
+  lastDividend: 0.84,
+  range: "140.53-349",
+  change: -5.5001,
+  changePercentage: -1.7817,
+  volume: 12566960.49164,
+  averageVolume: 33759272,
+  companyName: "Alphabet Inc.",
+  currency: "USD",
+  cik: "0001652044",
+  isin: "US02079K3059",
+  cusip: "02079K305",
+  exchangeFullName: "NASDAQ Global Select",
+  exchange: "NASDAQ",
+  industry: "Internet Content & Information",
+  website: "https://www.abc.xyz",
+  description: "Alphabet Inc. provides various products and platforms in the United States, Europe, the Middle East, Africa, the Asia-Pacific, Canada, and Latin America. It operates through Google Services, Google Cloud, and Other Bets segments. The Google Services segment offers products and services, including ads, Android, Chrome, hardware, Gmail, Google Drive, Google Maps, Google Photos, Google Play, Search, and YouTube. It is also involved in the sale of apps and in-app purchases and digital content in the Google Play store; and Fitbit wearable devices, Google Nest home products, Pixel phones, and other devices, as well as in the provision of YouTube non-advertising services. The Google Cloud segment offers infrastructure, platform, and other services; Google Workspace that include cloud-based collaboration tools for enterprises, such as Gmail, Docs, Drive, Calendar, and Meet; and other services for enterprise customers. The Other Bets segment sells health technology and internet services. The company was founded in 1998 and is headquartered in Mountain View, California.",
+  ceo: "Sundar Pichai",
+  sector: "Communication Services",
+  country: "US",
+  fullTimeEmployees: "185719",
+  phone: "650 253 0000",
+  address: "1600 Amphitheatre Parkway",
+  city: "Mountain View",
+  state: "CA",
+  zip: "94043",
+  image: "https://images.financialmodelingprep.com/symbol/GOOGL.png",
+  ipoDate: "2004-08-19",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: 0.15126364929803615,
+    revenueCagr3Y: 0.1252356803020953,
+    netMargin: 0.32799537426513103,
+    roe: 0.3182786895115167,
+    roa: 0.22202959610671263,
+    currentRatio: 2.005333592875566,
+    debtEquity: 0.1734675448207771,
+    fcf: 73266000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 79,
+    growth: 100,
+    profitability: 96,
+    cashflow: 88,
+    balance: 73,
+    valuation: 15,
+    quality: 95
+  },
+
+  strengths: [
+    "Croissance du chiffre d’affaires saine sur plusieurs années.",
+    "Rentabilité nette solide.",
+    "Bon rendement sur les capitaux propres.",
+    "Free cash flow positif.",
+    "Liquidité court terme correcte."
+  ],
+
+  weaknesses: [
+    "Le marché paie cher le chiffre d’affaires.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade."
+  ],
+
+  risks: [
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 79/100, ce qui correspond à un profil solide. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+},
+PEP: {
+  symbol: "PEP",
+  price: 159.54,
+  marketCap: 218145452477,
+  beta: 0.375,
+  lastDividend: 5.69,
+  range: "127.6-171.48",
+  change: -0.61,
+  changePercentage: -0.38089,
+  volume: 1936634.494,
+  averageVolume: 8314761,
+  companyName: "PepsiCo, Inc.",
+  currency: "USD",
+  cik: "0000077476",
+  isin: "US7134481081",
+  cusip: "713448108",
+  exchangeFullName: "NASDAQ Global Select",
+  exchange: "NASDAQ",
+  industry: "Beverages - Non-Alcoholic",
+  website: "https://www.pepsico.com",
+  description: "PepsiCo, Inc. manufactures, markets, distributes, and sells various beverages and convenient foods worldwide. The company operates through seven segments: Frito-Lay North America; Quaker Foods North America; PepsiCo Beverages North America; Latin America; Europe; Africa, Middle East and South Asia; and Asia Pacific, Australia and New Zealand and China Region. It provides dips, cheese-flavored snacks, and spreads, as well as corn, potato, and tortilla chips; cereals, rice, pasta, mixes and syrups, granola bars, grits, oatmeal, rice cakes, simply granola, and side dishes; beverage concentrates, fountain syrups, and finished goods; ready-to-drink tea, coffee, and juices; dairy products; and sparkling water makers and related products. It serves wholesale and other distributors, foodservice customers, grocery stores, drug stores, convenience stores, discount/dollar stores, mass merchandisers, membership stores, hard discounters, e-commerce retailers and authorized independent bottlers, and others through a network of direct-store-delivery, customer warehouse, and distributor networks, as well as directly to consumers through e-commerce platforms and retailers. The company was founded in 1898 and is headquartered in Purchase, New York.",
+  ceo: "Ramon Luis Laguarta",
+  sector: "Consumer Defensive",
+  country: "US",
+  fullTimeEmployees: "319000",
+  phone: "914 253 2000",
+  address: "700 Anderson Hill Road",
+  city: "Purchase",
+  state: "NY",
+  zip: "10577",
+  image: "https://images.financialmodelingprep.com/symbol/PEP.png",
+  ipoDate: "1972-06-01",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: 0.022546650118666633,
+    revenueCagr3Y: 0.028259092561689236,
+    netMargin: 0.08772957146659568,
+    roe: 0.4038028030971283,
+    roa: 0.07672324695760668,
+    currentRatio: 0.8530399218654621,
+    debtEquity: 2.4454082132706065,
+    fcf: 7672000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 54,
+    growth: 40,
+    profitability: 68,
+    cashflow: 78,
+    balance: 20,
+    valuation: 45,
+    quality: 70
+  },
+
+  strengths: [
+    "Bon rendement sur les capitaux propres.",
+    "Free cash flow positif.",
+    "Les données actuelles ne mettent pas en évidence davantage de points forts majeurs."
+  ],
+
+  weaknesses: [
+    "Liquidité court terme tendue.",
+    "Endettement élevé par rapport aux fonds propres.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade."
+  ],
+
+  risks: [
+    "Levier financier important à surveiller.",
+    "Tension possible sur les engagements court terme.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 54/100, ce qui correspond à un profil moyenne. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+},
+COST: {
+  symbol: "COST",
+  price: 1000.14,
+  marketCap: 443931141660,
+  beta: 0.993,
+  lastDividend: 5.2,
+  range: "844.06-1067.08",
+  change: 7.91,
+  changePercentage: 0.79719,
+  volume: 593353.87296,
+  averageVolume: 2597684,
+  companyName: "Costco Wholesale Corporation",
+  currency: "USD",
+  cik: "0000909832",
+  isin: "US22160K1051",
+  cusip: "22160K105",
+  exchangeFullName: "NASDAQ Global Select",
+  exchange: "NASDAQ",
+  industry: "Discount Stores",
+  website: "https://www.costco.com",
+  description: "Costco Wholesale Corporation, together with its subsidiaries, engages in the operation of membership warehouses in the United States, Puerto Rico, Canada, the United Kingdom, Mexico, Japan, Korea, Australia, Spain, France, Iceland, China, and Taiwan. It offers branded and private-label products in a range of merchandise categories. The company offers sundries, dry groceries, candies, coolers, freezers, liquor, and tobacco and deli products; appliances, electronics, health and beauty aids, hardware, garden and patio products, sporting goods, tires, toys and seasonal products, office supplies, automotive care products, postages, tickets, apparel, small appliances, furniture, domestics, housewares, special order kiosks, and jewelry; and meat, produce, service deli, and bakery products. It also operates pharmacies, opticals, food courts, hearing-aid centers, and tire installation centers, as well as gas stations, and offers business delivery, travel, same-day grocery, and various other services online in various countries.",
+  ceo: "Ron Vachris",
+  sector: "Consumer Defensive",
+  country: "US",
+  fullTimeEmployees: "333000",
+  phone: "425 313 8100",
+  address: "999 Lake Drive",
+  city: "Issaquah",
+  state: "WA",
+  zip: "98027",
+  image: "https://images.financialmodelingprep.com/symbol/COST.png",
+  ipoDate: "1986-07-09",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: 0.08167323631476142,
+    revenueCagr3Y: 0.06640442726947482,
+    netMargin: 0.029425763438516175,
+    roe: 0.27770539020710466,
+    roa: 0.10504675806430692,
+    currentRatio: 1.0342783227336423,
+    debtEquity: 0.2802427650528048,
+    fcf: 7837000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 57,
+    growth: 60,
+    profitability: 44,
+    cashflow: 78,
+    balance: 80,
+    valuation: 25,
+    quality: 50
+  },
+
+  strengths: [
+    "Bon rendement sur les capitaux propres.",
+    "Free cash flow positif.",
+    "Niveau d’endettement raisonnable."
+  ],
+
+  weaknesses: [
+    "Marge nette faible.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade."
+  ],
+
+  risks: [
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 57/100, ce qui correspond à un profil moyenne. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+},
+WMT: {
+  symbol: "WMT",
+  price: 124.435,
+  marketCap: 992101726255,
+  beta: 0.657,
+  lastDividend: 0.94,
+  range: "79.81-134.69",
+  change: 0.945,
+  changePercentage: 0.76524,
+  volume: 7310381,
+  averageVolume: 30994384,
+  companyName: "Walmart Inc.",
+  currency: "USD",
+  cik: "0000104169",
+  isin: "US9311421039",
+  cusip: "931142103",
+  exchangeFullName: "NASDAQ Global Select",
+  exchange: "NASDAQ",
+  industry: "Discount Stores",
+  website: "https://corporate.walmart.com",
+  description: "Walmart Inc. engages in the operation of retail, wholesale, other units, and eCommerce worldwide. The company operates through three segments: Walmart U.S., Walmart International, and Sam's Club. It operates supercenters, supermarkets, hypermarkets, warehouse clubs, cash and carry stores, and discount stores under Walmart and Walmart Neighborhood Market brands; membership-only warehouse clubs; ecommerce websites and mobile commerce applications. The company offers grocery and consumables, health and beauty products, home and apparel, electronics, appliances, and financial services including money transfers and bill payments. Walmart Inc. was founded in 1945 and is based in Bentonville, Arkansas.",
+  ceo: "John R. Furner",
+  sector: "Consumer Defensive",
+  country: "US",
+  fullTimeEmployees: "2100000",
+  phone: "479 273 4000",
+  address: "702 South West 8th Street",
+  city: "Bentonville",
+  state: "AR",
+  zip: "72716",
+  image: "https://images.financialmodelingprep.com/symbol/WMT.png",
+  ipoDate: "1972-08-25",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: 0.047252142117667706,
+    revenueCagr3Y: 0.05272290929168877,
+    netMargin: 0.03069845182658102,
+    roe: 0.21977172570946726,
+    roa: 0.07690713392443127,
+    currentRatio: 0.7897533242144247,
+    debtEquity: 0.6735296184386199,
+    fcf: 41565000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 51,
+    growth: 50,
+    profitability: 40,
+    cashflow: 83,
+    balance: 27,
+    valuation: 55,
+    quality: 55
+  },
+
+  strengths: [
+    "Bon rendement sur les capitaux propres.",
+    "Free cash flow positif.",
+    "Niveau d’endettement raisonnable."
+  ],
+
+  weaknesses: [
+    "Marge nette faible.",
+    "Liquidité court terme tendue.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade."
+  ],
+
+  risks: [
+    "Tension possible sur les engagements court terme.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 51/100, ce qui correspond à un profil moyenne. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+},
+JPM: {
+  symbol: "JPM",
+  price: 281.80771,
+  marketCap: 760044513997,
+  beta: 1.059,
+  lastDividend: 5.8,
+  range: "202.16-337.25",
+  change: -5.71229,
+  changePercentage: -1.98675,
+  volume: 5971029,
+  averageVolume: 10815067,
+  companyName: "JPMorgan Chase & Co.",
+  currency: "USD",
+  cik: "0000019617",
+  isin: "US46625H1005",
+  cusip: "46625H100",
+  exchangeFullName: "New York Stock Exchange",
+  exchange: "NYSE",
+  industry: "Banks - Diversified",
+  website: "https://www.jpmorganchase.com",
+  description: "JPMorgan Chase & Co. operates as a financial services company worldwide. It operates through four segments: Consumer & Community Banking (CCB), Corporate & Investment Bank (CIB), Commercial Banking (CB), and Asset & Wealth Management (AWM). The CCB segment offers deposit, investment and lending products, payments, and services to consumers; lending, deposit, and cash management solutions to small businesses; mortgage origination and servicing; credit card, auto loan, and leasing services. The CIB segment provides investment banking, capital markets, payments, cross-border financing, and risk management services. The CB segment provides financial solutions to companies, governments, and nonprofit clients. The AWM segment offers multi-asset investment management solutions and wealth management services. JPMorgan Chase & Co. was founded in 1799 and is headquartered in New York, New York.",
+  ceo: "James Dimon",
+  sector: "Financial Services",
+  country: "US",
+  fullTimeEmployees: "318477",
+  phone: "212 270 6000",
+  address: "383 Madison Avenue",
+  city: "New York City",
+  state: "NY",
+  zip: "10179",
+  image: "https://images.financialmodelingprep.com/symbol/JPM.png",
+  ipoDate: "1980-03-17",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: 0.03307372160612143,
+    revenueCagr3Y: 0.22061699039625116,
+    netMargin: 0.20392857781193588,
+    roe: 0.1574007140531622,
+    roa: 0.01289249474564397,
+    currentRatio: 14.853263554402865,
+    debtEquity: 1.379496631147948,
+    fcf: 100867000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 78,
+    growth: 70,
+    profitability: 68,
+    cashflow: 93,
+    balance: 67,
+    valuation: 90,
+    quality: 85
+  },
+
+  strengths: [
+    "Croissance du chiffre d’affaires saine sur plusieurs années.",
+    "Rentabilité nette solide.",
+    "Bon rendement sur les capitaux propres.",
+    "Free cash flow positif.",
+    "Liquidité court terme correcte."
+  ],
+
+  weaknesses: [
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade."
+  ],
+
+  risks: [
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 78/100, ce qui correspond à un profil solide. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+},
+JNJ: {
+  symbol: "JNJ",
+  price: 243.8,
+  marketCap: 587533367951,
+  beta: 0.326,
+  lastDividend: 5.2,
+  range: "141.5-251.71",
+  change: 0.81,
+  changePercentage: 0.33335,
+  volume: 2948030,
+  averageVolume: 8875208,
+  companyName: "Johnson & Johnson",
+  currency: "USD",
+  cik: "0000200406",
+  isin: "US4781601046",
+  cusip: "478160104",
+  exchangeFullName: "New York Stock Exchange",
+  exchange: "NYSE",
+  industry: "Drug Manufacturers - General",
+  website: "https://www.jnj.com",
+  description: "Johnson & Johnson researches, develops, manufactures, and sells healthcare products worldwide. In 2023 the company separated its Consumer Health business into Kenvue Inc. to focus on higher-growth segments. Its operations are now mainly organized into two segments: Innovative Medicine, which develops prescription medicines for complex diseases such as cancer, immunology disorders and infectious diseases; and MedTech, which provides medical technologies including surgical tools, orthopaedics, electrophysiology solutions and contact lenses. Founded in 1886, Johnson & Johnson is headquartered in New Brunswick, New Jersey.",
+  ceo: "Joaquin Duato",
+  sector: "Healthcare",
+  country: "US",
+  fullTimeEmployees: "138100",
+  phone: "732 524 0400",
+  address: "One Johnson & Johnson Plaza",
+  city: "New Brunswick",
+  state: "NJ",
+  zip: "08933",
+  image: "https://images.financialmodelingprep.com/symbol/JNJ.png",
+  ipoDate: "1943-01-02",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: 0.06048119251078021,
+    revenueCagr3Y: 0.05599284954178807,
+    netMargin: 0.2845646704107524,
+    roe: 0.3287059746885117,
+    roa: 0.13455147833944078,
+    currentRatio: 1.027676163027011,
+    debtEquity: 0.5878176199352497,
+    fcf: 19698000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 70,
+    growth: 60,
+    profitability: 96,
+    cashflow: 78,
+    balance: 53,
+    valuation: 40,
+    quality: 90
+  },
+
+  strengths: [
+    "Rentabilité nette solide.",
+    "Bon rendement sur les capitaux propres.",
+    "Free cash flow positif.",
+    "Niveau d’endettement raisonnable."
+  ],
+
+  weaknesses: [
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade."
+  ],
+
+  risks: [
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 70/100, ce qui correspond à un profil solide. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+},
+ABBV: {
+  symbol: "ABBV",
+  price: 227,
+  marketCap: 401374365724,
+  beta: 0.334,
+  lastDividend: 6.65,
+  range: "164.39-244.81",
+  change: -0.68,
+  changePercentage: -0.29866,
+  volume: 2339419,
+  averageVolume: 6796237,
+  companyName: "AbbVie Inc.",
+  currency: "USD",
+  cik: "0001551152",
+  isin: "US00287Y1091",
+  cusip: "00287Y109",
+  exchangeFullName: "New York Stock Exchange",
+  exchange: "NYSE",
+  industry: "Drug Manufacturers - General",
+  website: "https://www.abbvie.com",
+  description: "AbbVie Inc. discovers, develops, manufactures, and sells pharmaceuticals worldwide. Its portfolio includes treatments such as HUMIRA for autoimmune diseases, SKYRIZI and RINVOQ for inflammatory conditions, IMBRUVICA and VENCLEXTA for oncology, MAVYRET for hepatitis C, and Botox therapeutic. The company also markets several therapies in neuroscience, ophthalmology, and gastroenterology. AbbVie was founded in 2012 as a spin-off from Abbott Laboratories and is headquartered in North Chicago, Illinois.",
+  ceo: "Robert A. Michael",
+  sector: "Healthcare",
+  country: "US",
+  fullTimeEmployees: "55000",
+  phone: "847 932 7900",
+  address: "1 North Waukegan Road",
+  city: "North Chicago",
+  state: "IL",
+  zip: "60064-6400",
+  image: "https://images.financialmodelingprep.com/symbol/ABBV.png",
+  ipoDate: "2013-01-02",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: 0.08566762523520421,
+    revenueCagr3Y: 0.017525049181538188,
+    netMargin: 0.06909744931327665,
+    roe: -1.2923547400611621,
+    roa: 0.03154673036727381,
+    currentRatio: 0.6713483794959458,
+    debtEquity: -21.1217125382263,
+    fcf: 17816000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 54,
+    growth: 40,
+    profitability: 52,
+    cashflow: 93,
+    balance: 33,
+    valuation: 47,
+    quality: 55
+  },
+
+  strengths: [
+    "Free cash flow positif.",
+    "Niveau d’endettement raisonnable.",
+    "Les données actuelles ne mettent pas en évidence davantage de points forts majeurs."
+  ],
+
+  weaknesses: [
+    "ROE modeste.",
+    "Liquidité court terme tendue.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade."
+  ],
+
+  risks: [
+    "Tension possible sur les engagements court terme.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 54/100, ce qui correspond à un profil moyenne. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+},
+XOM: {
+  symbol: "XOM",
+  price: 153.85,
+  marketCap: 641056557244,
+  beta: 0.348,
+  lastDividend: 4.04,
+  range: "97.8-159.61",
+  change: 2.27,
+  changePercentage: 1.49756,
+  volume: 10079871,
+  averageVolume: 20126344,
+  companyName: "Exxon Mobil Corporation",
+  currency: "USD",
+  cik: "0000034088",
+  isin: "US30231G1022",
+  cusip: "30231G102",
+  exchangeFullName: "New York Stock Exchange",
+  exchange: "NYSE",
+  industry: "Oil & Gas Integrated",
+  website: "https://corporate.exxonmobil.com",
+  description: "Exxon Mobil Corporation explores for and produces crude oil and natural gas in the United States and internationally. The company operates through three segments: Upstream, Downstream, and Chemical. It is involved in the production, transport, and sale of petroleum products and petrochemicals, including olefins, polyolefins, and aromatics. ExxonMobil also invests in emerging energy technologies such as carbon capture, hydrogen, and biofuels. Founded in 1870, the company is headquartered in Irving, Texas.",
+  ceo: "Darren W. Woods",
+  sector: "Energy",
+  country: "US",
+  fullTimeEmployees: "61000",
+  phone: "972-940-6000",
+  address: "5959 Las Colinas Boulevard",
+  city: "Irving",
+  state: "TX",
+  zip: "75039-2298",
+  image: "https://images.financialmodelingprep.com/symbol/XOM.png",
+  ipoDate: "1978-01-13",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: -0.045223686576447264,
+    revenueCagr3Y: -0.06688991546295975,
+    netMargin: 0.08905080193266544,
+    roe: 0.11120106713546606,
+    roa: 0.06424339614236714,
+    currentRatio: 1.1527996681874741,
+    debtEquity: 0.16784637567177874,
+    fcf: 23612000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 46,
+    growth: 10,
+    profitability: 36,
+    cashflow: 83,
+    balance: 53,
+    valuation: 60,
+    quality: 30
+  },
+
+  strengths: [
+    "Free cash flow positif.",
+    "Niveau d’endettement raisonnable.",
+    "Les données actuelles ne mettent pas en évidence davantage de points forts majeurs."
+  ],
+
+  weaknesses: [
+    "Baisse récente du chiffre d’affaires.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade."
+  ],
+
+  risks: [
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 46/100, ce qui correspond à un profil fragile. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+}
 };
