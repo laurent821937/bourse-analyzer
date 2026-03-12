@@ -980,5 +980,87 @@ XOM: {
 
   verdict: "Cette entreprise obtient un score de 46/100, ce qui correspond à un profil fragile. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
   source: "api"
+},
+GS: {
+  symbol: "GS",
+  price: 794.35,
+  marketCap: 238248216685,
+  beta: 1.336,
+  lastDividend: 15.5,
+  range: "439.38-984.7",
+  change: -29.41,
+  changePercentage: -3.57021,
+  volume: 1755976,
+  averageVolume: 2425942,
+  companyName: "The Goldman Sachs Group, Inc.",
+  currency: "USD",
+  cik: "0000886982",
+  isin: "US38141G1040",
+  cusip: "38141G104",
+  exchangeFullName: "New York Stock Exchange",
+  exchange: "NYSE",
+  industry: "Financial - Capital Markets",
+  website: "https://www.goldmansachs.com",
+  description: "The Goldman Sachs Group, Inc. is a global financial institution providing investment banking, securities, asset management, and wealth management services to corporations, governments, financial institutions, and individuals worldwide. Founded in 1869 and headquartered in New York, the company operates through four main segments: Investment Banking, Global Markets, Asset Management, and Consumer & Wealth Management.",
+  ceo: "David Solomon",
+  sector: "Financial Services",
+  country: "US",
+  fullTimeEmployees: "46600",
+  phone: "212-902-1000",
+  address: "200 West Street",
+  city: "New York City",
+  state: "NY",
+  zip: "10282",
+  image: "https://images.financialmodelingprep.com/symbol/GS.png",
+  ipoDate: "1999-05-04",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: -0.013842794415583337,
+    revenueCagr3Y: 0.22106900803685092,
+    netMargin: 0.1373014540716404,
+    roe: 0.13743878628812853,
+    roa: 0.009493069219375235,
+    currentRatio: 0.830265346928495,
+    debtEquity: 4.877364529654643,
+    fcf: -47218000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 38,
+    growth: 60,
+    profitability: 44,
+    cashflow: 8,
+    balance: 20,
+    valuation: 53,
+    quality: 50
+  },
+
+  strengths: [
+    "Croissance du chiffre d’affaires saine sur plusieurs années.",
+    "Rentabilité nette solide.",
+    "Les données actuelles ne mettent pas en évidence davantage de points forts majeurs."
+  ],
+
+  weaknesses: [
+    "Baisse récente du chiffre d’affaires.",
+    "Free cash flow négatif.",
+    "Liquidité court terme tendue.",
+    "Endettement élevé par rapport aux fonds propres."
+  ],
+
+  risks: [
+    "Levier financier important à surveiller.",
+    "Génération de cash insuffisante actuellement.",
+    "Tension possible sur les engagements court terme."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 38/100, ce qui correspond à un profil fragile. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
 }
 };
