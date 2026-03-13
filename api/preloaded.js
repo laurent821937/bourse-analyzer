@@ -1,5 +1,3 @@
-// api/preloaded.js
-
 import { listPreloadedCompanies } from "../data/preloaded-analyses.js";
 
 export default async function handler(req, res) {
@@ -12,15 +10,19 @@ export default async function handler(req, res) {
   }
 
   if (req.method !== "GET") {
-    return res.status(405).json({ error: "Méthode non autorisée" });
+    return res.status(405).json({
+      success: false,
+      error: "Méthode non autorisée"
+    });
   }
 
   try {
-    const companies = listPreloadedCompanies().sort((a, b) => {
-      const diff = (b.score || 0) - (a.score || 0);
-      if (diff !== 0) return diff;
-      return String(a.companyName || "").localeCompare(String(b.companyName || ""));
-    });
+    const companies = listPreloadedCompanies()
+      .sort((a, b) => {
+        const scoreDiff = (b.score || 0) - (a.score || 0);
+        if (scoreDiff !== 0) return scoreDiff;
+        return String(a.companyName || "").localeCompare(String(b.companyName || ""));
+      });
 
     return res.status(200).json({
       success: true,
