@@ -1,5 +1,3 @@
-// api/analyze.js
-
 import { PRELOADED_ANALYSES, findPreloadedAnalysis } from "../data/preloaded-analyses.js";
 
 const ANALYZE_CACHE = {};
@@ -23,10 +21,15 @@ export default async function handler(req, res) {
     const rawSymbol = String(req.query.symbol || "").trim().toUpperCase();
 
     if (!rawQuery && !rawSymbol) {
-      return res.status(400).json({ error: "Query ou symbol manquant" });
+      return res.status(400).json({
+        error: "Query ou symbol manquant"
+      });
     }
 
-    // 1) lookup preload direct par symbole
+    // =========================
+    // 1) PRIORITÉ ABSOLUE PRELOAD
+    // =========================
+
     if (rawSymbol && PRELOADED_ANALYSES[rawSymbol]) {
       return res.status(200).json({
         ...PRELOADED_ANALYSES[rawSymbol],
@@ -34,7 +37,6 @@ export default async function handler(req, res) {
       });
     }
 
-    // 2) lookup preload large par nom / ticker / industrie / secteur...
     const preloadedMatch = findPreloadedAnalysis(rawQuery || rawSymbol);
     if (preloadedMatch) {
       return res.status(200).json({
@@ -43,9 +45,15 @@ export default async function handler(req, res) {
       });
     }
 
+    // =========================
+    // 2) FALLBACK FMP SEULEMENT SI PAS PRELOAD
+    // =========================
+
     const apiKey = process.env.FMP_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ error: "Clé API FMP absente côté serveur" });
+      return res.status(500).json({
+        error: "Clé API FMP absente côté serveur"
+      });
     }
 
     const BASE = "https://financialmodelingprep.com/stable";
@@ -83,7 +91,7 @@ export default async function handler(req, res) {
     }
 
     function avg(arr) {
-      const valid = arr.filter((v) => v !== null && v !== undefined && Number.isFinite(v));
+      const valid = arr.filter(v => v !== null && v !== undefined && Number.isFinite(v));
       if (!valid.length) return null;
       return valid.reduce((a, b) => a + b, 0) / valid.length;
     }
@@ -134,11 +142,13 @@ export default async function handler(req, res) {
       });
 
       if (!Array.isArray(search) || !search.length) {
-        return res.status(404).json({ error: "Entreprise introuvable" });
+        return res.status(404).json({
+          error: "Entreprise introuvable"
+        });
       }
 
       const preferred =
-        search.find((x) =>
+        search.find(x =>
           ["NASDAQ", "NYSE", "AMEX"].includes(
             String(x.exchangeShortName || x.exchange || "").toUpperCase()
           )
@@ -147,7 +157,7 @@ export default async function handler(req, res) {
       symbol = preferred.symbol;
     }
 
-    // 3) recheck preload une fois le symbole connu
+    // Recheck preload après résolution du symbole
     if (PRELOADED_ANALYSES[symbol]) {
       return res.status(200).json({
         ...PRELOADED_ANALYSES[symbol],
@@ -212,9 +222,11 @@ export default async function handler(req, res) {
 
     const freeCashFlow =
       n(c0.freeCashFlow) ??
-      (operatingCashFlow !== null && capexRaw !== null
-        ? operatingCashFlow - Math.abs(capexRaw)
-        : null);
+      (
+        operatingCashFlow !== null && capexRaw !== null
+          ? operatingCashFlow - Math.abs(capexRaw)
+          : null
+      );
 
     const price = n(profile.price);
     const marketCap = n(profile.mktCap || profile.marketCap);
@@ -245,67 +257,85 @@ export default async function handler(req, res) {
         : null;
 
     const debtEquity =
-      totalDebt !== null && equity !== null && equity !== 0
+      totalDebt !== null &&
+      equity !== null &&
+      equity !== 0
         ? totalDebt / equity
         : null;
 
     const cashToDebt =
-      cashEq !== null && totalDebt !== null && totalDebt !== 0
+      cashEq !== null &&
+      totalDebt !== null &&
+      totalDebt !== 0
         ? cashEq / totalDebt
         : null;
 
     const fcfMargin = pct(freeCashFlow, revenue);
 
     const cashConversion =
-      operatingCashFlow !== null && netIncome !== null && netIncome !== 0
+      operatingCashFlow !== null &&
+      netIncome !== null &&
+      netIncome !== 0
         ? operatingCashFlow / netIncome
         : null;
 
     const eps =
-      shares !== null && shares > 0 && netIncome !== null
+      shares !== null &&
+      shares > 0 &&
+      netIncome !== null
         ? netIncome / shares
         : null;
 
     const peRatio =
-      price !== null && eps !== null && eps > 0
+      price !== null &&
+      eps !== null &&
+      eps > 0
         ? price / eps
         : null;
 
     const priceToSales =
-      marketCap !== null && revenue !== null && revenue > 0
+      marketCap !== null &&
+      revenue !== null &&
+      revenue > 0
         ? marketCap / revenue
         : null;
 
     const priceToBook =
-      marketCap !== null && equity !== null && equity > 0
+      marketCap !== null &&
+      equity !== null &&
+      equity > 0
         ? marketCap / equity
         : null;
 
     const priceToFcf =
-      marketCap !== null && freeCashFlow !== null && freeCashFlow > 0
+      marketCap !== null &&
+      freeCashFlow !== null &&
+      freeCashFlow > 0
         ? marketCap / freeCashFlow
         : null;
 
     const fcfYield =
-      marketCap !== null && freeCashFlow !== null && marketCap > 0
+      marketCap !== null &&
+      freeCashFlow !== null &&
+      marketCap > 0
         ? freeCashFlow / marketCap
         : null;
 
     const sGrowth = avg([
-      scoreHigherBetter(revenueGrowth1Y, [-0.05, 0, 0.05, 0.1, 0.15]),
+      scoreHigherBetter(revenueGrowth1Y, [-0.05, 0, 0.05, 0.10, 0.15]),
       scoreHigherBetter(revenueCagr3Y, [-0.02, 0.02, 0.05, 0.08, 0.12])
     ]);
 
     const sProfitability = avg([
-      scoreHigherBetter(grossMargin, [0.15, 0.25, 0.35, 0.5, 0.65]),
+      scoreHigherBetter(grossMargin, [0.15, 0.25, 0.35, 0.50, 0.65]),
       scoreHigherBetter(operatingMargin, [0.03, 0.08, 0.12, 0.18, 0.25]),
-      scoreHigherBetter(netMargin, [0.02, 0.05, 0.1, 0.15, 0.2]),
-      scoreHigherBetter(roe, [0.05, 0.1, 0.15, 0.2, 0.25]),
-      scoreHigherBetter(roa, [0.02, 0.04, 0.07, 0.1, 0.14])
+      scoreHigherBetter(netMargin, [0.02, 0.05, 0.10, 0.15, 0.20]),
+      scoreHigherBetter(roe, [0.05, 0.10, 0.15, 0.20, 0.25]),
+      scoreHigherBetter(roa, [0.02, 0.04, 0.07, 0.10, 0.14])
     ]);
 
     const sCashflow = avg([
-      scoreHigherBetter(fcfMargin, [-0.02, 0.02, 0.05, 0.1, 0.15]),
+      scoreHigherBetter(fcfMargin, [-0.02, 0.02, 0.05, 0.10, 0.15]),
       scoreHigherBetter(cashConversion, [0.5, 0.8, 1.0, 1.2, 1.5]),
       freeCashFlow !== null ? (freeCashFlow > 0 ? 85 : 15) : null,
       operatingCashFlow !== null ? (operatingCashFlow > 0 ? 85 : 15) : null
@@ -322,14 +352,14 @@ export default async function handler(req, res) {
       scoreLowerBetter(priceToSales, [1.5, 3, 5, 8, 12]),
       scoreLowerBetter(priceToBook, [1.5, 3, 5, 8, 12]),
       scoreLowerBetter(priceToFcf, [10, 18, 25, 35, 50]),
-      scoreHigherBetter(fcfYield, [0.01, 0.03, 0.05, 0.07, 0.1])
+      scoreHigherBetter(fcfYield, [0.01, 0.03, 0.05, 0.07, 0.10])
     ]);
 
     const sQuality = avg([
-      scoreHigherBetter(grossMargin, [0.15, 0.25, 0.35, 0.5, 0.65]),
-      scoreHigherBetter(roe, [0.05, 0.1, 0.15, 0.2, 0.25]),
+      scoreHigherBetter(grossMargin, [0.15, 0.25, 0.35, 0.50, 0.65]),
+      scoreHigherBetter(roe, [0.05, 0.10, 0.15, 0.20, 0.25]),
       scoreHigherBetter(revenueCagr3Y, [-0.02, 0.02, 0.05, 0.08, 0.12]),
-      scoreHigherBetter(fcfMargin, [-0.02, 0.02, 0.05, 0.1, 0.15])
+      scoreHigherBetter(fcfMargin, [-0.02, 0.02, 0.05, 0.10, 0.15])
     ]);
 
     const weighted =
@@ -346,81 +376,33 @@ export default async function handler(req, res) {
     const weaknesses = [];
     const risks = [];
 
-    if (revenueCagr3Y !== null && revenueCagr3Y >= 0.08) {
-      strengths.push("Croissance du chiffre d’affaires saine sur plusieurs années.");
-    }
-    if (netMargin !== null && netMargin >= 0.1) {
-      strengths.push("Rentabilité nette solide.");
-    }
-    if (roe !== null && roe >= 0.15) {
-      strengths.push("Bon rendement sur les capitaux propres.");
-    }
-    if (freeCashFlow !== null && freeCashFlow > 0) {
-      strengths.push("Free cash flow positif.");
-    }
-    if (currentRatio !== null && currentRatio >= 1.2) {
-      strengths.push("Liquidité court terme correcte.");
-    }
-    if (debtEquity !== null && debtEquity <= 0.8) {
-      strengths.push("Niveau d’endettement raisonnable.");
-    }
-    if (peRatio !== null && peRatio <= 20) {
-      strengths.push("Valorisation plutôt modérée sur la base du PER.");
-    }
-    if (fcfYield !== null && fcfYield >= 0.05) {
-      strengths.push("Rendement du free cash flow intéressant.");
-    }
+    if (revenueCagr3Y !== null && revenueCagr3Y >= 0.08) strengths.push("Croissance du chiffre d’affaires saine sur plusieurs années.");
+    if (netMargin !== null && netMargin >= 0.10) strengths.push("Rentabilité nette solide.");
+    if (roe !== null && roe >= 0.15) strengths.push("Bon rendement sur les capitaux propres.");
+    if (freeCashFlow !== null && freeCashFlow > 0) strengths.push("Free cash flow positif.");
+    if (currentRatio !== null && currentRatio >= 1.2) strengths.push("Liquidité court terme correcte.");
+    if (debtEquity !== null && debtEquity <= 0.8) strengths.push("Niveau d’endettement raisonnable.");
+    if (peRatio !== null && peRatio <= 20) strengths.push("Valorisation plutôt modérée sur la base du PER.");
+    if (fcfYield !== null && fcfYield >= 0.05) strengths.push("Rendement du free cash flow intéressant.");
 
-    if (revenueGrowth1Y !== null && revenueGrowth1Y < 0) {
-      weaknesses.push("Baisse récente du chiffre d’affaires.");
-    }
-    if (netMargin !== null && netMargin < 0.05) {
-      weaknesses.push("Marge nette faible.");
-    }
-    if (roe !== null && roe < 0.1) {
-      weaknesses.push("ROE modeste.");
-    }
-    if (freeCashFlow !== null && freeCashFlow < 0) {
-      weaknesses.push("Free cash flow négatif.");
-    }
-    if (currentRatio !== null && currentRatio < 1) {
-      weaknesses.push("Liquidité court terme tendue.");
-    }
-    if (debtEquity !== null && debtEquity > 1.5) {
-      weaknesses.push("Endettement élevé par rapport aux fonds propres.");
-    }
-    if (peRatio !== null && peRatio > 30) {
-      weaknesses.push("Valorisation exigeante.");
-    }
-    if (priceToSales !== null && priceToSales > 8) {
-      weaknesses.push("Le marché paie cher le chiffre d’affaires.");
-    }
+    if (revenueGrowth1Y !== null && revenueGrowth1Y < 0) weaknesses.push("Baisse récente du chiffre d’affaires.");
+    if (netMargin !== null && netMargin < 0.05) weaknesses.push("Marge nette faible.");
+    if (roe !== null && roe < 0.10) weaknesses.push("ROE modeste.");
+    if (freeCashFlow !== null && freeCashFlow < 0) weaknesses.push("Free cash flow négatif.");
+    if (currentRatio !== null && currentRatio < 1) weaknesses.push("Liquidité court terme tendue.");
+    if (debtEquity !== null && debtEquity > 1.5) weaknesses.push("Endettement élevé par rapport aux fonds propres.");
+    if (peRatio !== null && peRatio > 30) weaknesses.push("Valorisation exigeante.");
+    if (priceToSales !== null && priceToSales > 8) weaknesses.push("Le marché paie cher le chiffre d’affaires.");
 
-    if (debtEquity !== null && debtEquity > 2) {
-      risks.push("Levier financier important à surveiller.");
-    }
-    if (revenueGrowth1Y !== null && revenueGrowth1Y < -0.05) {
-      risks.push("Contraction notable du chiffre d’affaires.");
-    }
-    if (freeCashFlow !== null && freeCashFlow < 0) {
-      risks.push("Génération de cash insuffisante actuellement.");
-    }
-    if (peRatio !== null && peRatio > 35) {
-      risks.push("Valorisation élevée, donc marge d’erreur réduite.");
-    }
-    if (currentRatio !== null && currentRatio < 1) {
-      risks.push("Tension possible sur les engagements court terme.");
-    }
+    if (debtEquity !== null && debtEquity > 2) risks.push("Levier financier important à surveiller.");
+    if (revenueGrowth1Y !== null && revenueGrowth1Y < -0.05) risks.push("Contraction notable du chiffre d’affaires.");
+    if (freeCashFlow !== null && freeCashFlow < 0) risks.push("Génération de cash insuffisante actuellement.");
+    if (peRatio !== null && peRatio > 35) risks.push("Valorisation élevée, donc marge d’erreur réduite.");
+    if (currentRatio !== null && currentRatio < 1) risks.push("Tension possible sur les engagements court terme.");
 
-    while (strengths.length < 3) {
-      strengths.push("Les données actuelles ne mettent pas en évidence davantage de points forts majeurs.");
-    }
-    while (weaknesses.length < 3) {
-      weaknesses.push("Aucune faiblesse critique supplémentaire ne ressort à ce stade.");
-    }
-    while (risks.length < 3) {
-      risks.push("Aucun risque critique supplémentaire n’est visible avec les données disponibles.");
-    }
+    while (strengths.length < 3) strengths.push("Les données actuelles ne mettent pas en évidence davantage de points forts majeurs.");
+    while (weaknesses.length < 3) weaknesses.push("Aucune faiblesse critique supplémentaire ne ressort à ce stade.");
+    while (risks.length < 3) risks.push("Aucun risque critique supplémentaire n’est visible avec les données disponibles.");
 
     const result = {
       symbol,
