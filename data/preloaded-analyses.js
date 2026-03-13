@@ -1389,3 +1389,76 @@ SBUX: {
   source: "api"
 }
 };
+function normalize(value = "") {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+function getAllPreloadedAnalyses() {
+  return PRELOADED_ANALYSES;
+}
+
+function getPreloadedBySymbol(symbol) {
+  if (!symbol) return null;
+  const clean = String(symbol).trim().toUpperCase();
+  return PRELOADED_ANALYSES[clean] || null;
+}
+
+function findPreloadedAnalysis(query) {
+  if (!query) return null;
+
+  const raw = String(query).trim();
+  const upper = raw.toUpperCase();
+
+  if (PRELOADED_ANALYSES[upper]) {
+    return PRELOADED_ANALYSES[upper];
+  }
+
+  const q = normalize(raw);
+
+  for (const item of Object.values(PRELOADED_ANALYSES)) {
+    const haystack = [
+      item.symbol,
+      item.companyName,
+      item.industry,
+      item.sector,
+      item.website
+    ]
+      .filter(Boolean)
+      .map(normalize)
+      .join(" ");
+
+    if (haystack.includes(q)) {
+      return item;
+    }
+  }
+
+  return null;
+}
+
+function listPreloadedCompanies() {
+  return Object.values(PRELOADED_ANALYSES).map((item) => ({
+    symbol: item.symbol,
+    companyName: item.companyName,
+    sector: item.sector || "",
+    industry: item.industry || "",
+    image: item.image || "",
+    score: item.scores?.global ?? null,
+    source: item.source || "preloaded",
+    verdict: item.verdict || "",
+    price: item.price ?? null,
+    marketCap: item.marketCap ?? null
+  }));
+}
+
+module.exports = {
+  PRELOADED_ANALYSES,
+  getAllPreloadedAnalyses,
+  getPreloadedBySymbol,
+  findPreloadedAnalysis,
+  listPreloadedCompanies
+};
