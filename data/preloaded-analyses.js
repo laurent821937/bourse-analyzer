@@ -1,4 +1,4 @@
-const PRELOADED_ANALYSES = {
+export const PRELOADED_ANALYSES = {
  AAPL: {
   symbol: "AAPL",
   price: 260.83,
