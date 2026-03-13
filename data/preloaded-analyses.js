@@ -1389,7 +1389,6 @@ SBUX: {
   source: "preloaded"
 }
 };
-};
 
 function normalize(value = "") {
   return String(value)
