@@ -1062,5 +1062,330 @@ GS: {
 
   verdict: "Cette entreprise obtient un score de 38/100, ce qui correspond à un profil fragile. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
   source: "api"
+},
+NKE: {
+  symbol: "NKE",
+  price: 54.13,
+  marketCap: 79994557853,
+  beta: 1.286,
+  lastDividend: 1.62,
+  range: "52.28-80.17",
+  change: -1.57,
+  changePercentage: -2.81867,
+  volume: 18529988,
+  averageVolume: 19108277,
+  companyName: "NIKE, Inc.",
+  currency: "USD",
+  cik: "0000320187",
+  isin: "US6541061031",
+  cusip: "654106103",
+  exchangeFullName: "New York Stock Exchange",
+  exchange: "NYSE",
+  industry: "Apparel - Footwear & Accessories",
+  website: "https://investors.nike.com",
+  description: "NIKE, Inc., together with its subsidiaries, designs, develops, markets, and sells men's, women's, and kids athletic footwear, apparel, equipment, and accessories worldwide. The company provides athletic and casual footwear, apparel, and accessories under the Jumpman trademark; and casual sneakers, apparel, and accessories under the Converse, Chuck Taylor, All Star, One Star, Star Chevron, and Jack Purcell trademarks. In addition, it sells a line of performance equipment and accessories comprising bags, socks, sport balls, eyewear, timepieces, digital devices, bats, gloves, protective equipment, and other equipment for sports activities under the NIKE brand.",
+  ceo: "Elliott J. Hill",
+  sector: "Consumer Cyclical",
+  country: "US",
+  fullTimeEmployees: "79400",
+  phone: "503 671 6453",
+  address: "One Bowerman Drive",
+  city: "Beaverton",
+  state: "OR",
+  zip: "97005-6453",
+  image: "https://images.financialmodelingprep.com/symbol/NKE.png",
+  ipoDate: "1980-12-02",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: -0.09838012538452556,
+    revenueCagr3Y: -0.002869856686446237,
+    netMargin: 0.06951132609212032,
+    roe: 0.24362370392794974,
+    roa: 0.08800131222832773,
+    currentRatio: 2.2110543251940187,
+    debtEquity: 0.8338757284492545,
+    fcf: 3268000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 53,
+    growth: 10,
+    profitability: 52,
+    cashflow: 73,
+    balance: 67,
+    valuation: 55,
+    quality: 55
+  },
+
+  strengths: [
+    "Bon rendement sur les capitaux propres.",
+    "Free cash flow positif.",
+    "Liquidité court terme correcte."
+  ],
+
+  weaknesses: [
+    "Baisse récente du chiffre d’affaires.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade."
+  ],
+
+  risks: [
+    "Contraction notable du chiffre d’affaires.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 53/100, ce qui correspond à un profil moyenne. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+},
+BA: {
+  symbol: "BA",
+  price: 204.76,
+  marketCap: 160807651720,
+  beta: 1.096,
+  lastDividend: 0,
+  range: "128.88-254.35",
+  change: -9.34,
+  changePercentage: -4.36245,
+  volume: 10668326,
+  averageVolume: 7210267,
+  companyName: "The Boeing Company",
+  currency: "USD",
+  cik: "0000012927",
+  isin: "US0970231058",
+  cusip: "097023105",
+  exchangeFullName: "New York Stock Exchange",
+  exchange: "NYSE",
+  industry: "Aerospace & Defense",
+  website: "https://www.boeing.com",
+  description: "The Boeing Company designs, develops, manufactures, and supports commercial jetliners, military aircraft, satellites, missile defense systems, human space flight and launch systems worldwide. The company operates through Commercial Airplanes, Defense Space & Security, Global Services, and Boeing Capital segments. Boeing provides commercial aircraft, defense systems, satellite and space technologies, and a wide range of aviation services including maintenance, logistics, training, and digital analytics solutions for commercial and government customers.",
+  ceo: "Robert K. Ortberg",
+  sector: "Industrials",
+  country: "US",
+  fullTimeEmployees: "172000",
+  phone: "7034146338",
+  address: "929 Long Bridge Drive",
+  city: "Arlington",
+  state: "VA",
+  zip: "22202",
+  image: "https://images.financialmodelingprep.com/symbol/BA.png",
+  ipoDate: "1962-01-02",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: 0.34494422562313964,
+    revenueCagr3Y: 0.10333618460490057,
+    netMargin: 0.024982394956574228,
+    roe: 0.4097909790979098,
+    roa: 0.013284988260468986,
+    currentRatio: 1.2726541182999584,
+    debtEquity: 9.918958562522919,
+    fcf: -1877000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 36,
+    growth: 90,
+    profitability: 24,
+    cashflow: 25,
+    balance: 20,
+    valuation: 27,
+    quality: 45
+  },
+
+  strengths: [
+    "Croissance du chiffre d’affaires saine sur plusieurs années.",
+    "Bon rendement sur les capitaux propres.",
+    "Liquidité court terme correcte."
+  ],
+
+  weaknesses: [
+    "Marge nette faible.",
+    "Free cash flow négatif.",
+    "Endettement élevé par rapport aux fonds propres."
+  ],
+
+  risks: [
+    "Levier financier important à surveiller.",
+    "Génération de cash insuffisante actuellement.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 36/100, ce qui correspond à un profil fragile. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+},
+PFE: {
+  symbol: "PFE",
+  price: 26.86,
+  marketCap: 152733143197,
+  beta: 0.412,
+  lastDividend: 1.72,
+  range: "20.92-27.94",
+  change: -0.44,
+  changePercentage: -1.61172,
+  volume: 38473483,
+  averageVolume: 47341978,
+  companyName: "Pfizer Inc.",
+  currency: "USD",
+  cik: "0000078003",
+  isin: "US7170811035",
+  cusip: "717081103",
+  exchangeFullName: "New York Stock Exchange",
+  exchange: "NYSE",
+  industry: "Drug Manufacturers - General",
+  website: "https://www.pfizer.com",
+  description: "Pfizer Inc. discovers, develops, manufactures, markets, distributes, and sells biopharmaceutical products worldwide. The company offers medicines and vaccines across multiple therapeutic areas including cardiovascular, metabolic, oncology, immunology, rare diseases, and infectious diseases. Pfizer produces well-known treatments and vaccines including Comirnaty, Paxlovid, Prevnar, Eliquis and Ibrance. The company collaborates with several pharmaceutical and biotechnology partners and distributes its medicines to hospitals, pharmacies, governments and healthcare providers globally.",
+  ceo: "Albert Bourla",
+  sector: "Healthcare",
+  country: "US",
+  fullTimeEmployees: "81000",
+  phone: "212 733 2323",
+  address: "235 East 42nd Street",
+  city: "New York City",
+  state: "NY",
+  zip: "10017",
+  image: "https://images.financialmodelingprep.com/symbol/PFE.png",
+  ipoDate: "1972-06-01",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: -0.01647099501783833,
+    revenueCagr3Y: -0.1455907616196218,
+    netMargin: 0.12416305789482095,
+    roe: 0.08985151949673897,
+    roa: 0.03732705611068409,
+    currentRatio: 1.1599069868051048,
+    debtEquity: 0.7795920255330959,
+    fcf: 9076000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 53,
+    growth: 10,
+    profitability: 56,
+    cashflow: 88,
+    balance: 33,
+    valuation: 75,
+    quality: 50
+  },
+
+  strengths: [
+    "Rentabilité nette solide.",
+    "Free cash flow positif.",
+    "Niveau d’endettement raisonnable.",
+    "Rendement du free cash flow intéressant."
+  ],
+
+  weaknesses: [
+    "Baisse récente du chiffre d’affaires.",
+    "ROE modeste.",
+    "Aucune faiblesse critique supplémentaire ne ressort à ce stade."
+  ],
+
+  risks: [
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 53/100, ce qui correspond à un profil moyenne. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
+},
+SBUX: {
+  symbol: "SBUX",
+  price: 100.18,
+  marketCap: 114135074000,
+  beta: 0.928,
+  lastDividend: 2.46,
+  range: "75.5-104.82",
+  change: -1.26,
+  changePercentage: -1.24211,
+  volume: 12244810,
+  averageVolume: 9361474,
+  companyName: "Starbucks Corporation",
+  currency: "USD",
+  cik: "0000829224",
+  isin: "US8552441094",
+  cusip: "855244109",
+  exchangeFullName: "NASDAQ Global Select",
+  exchange: "NASDAQ",
+  industry: "Restaurants",
+  website: "https://www.starbucks.com",
+  description: "Starbucks Corporation operates as a roaster, marketer, and retailer of specialty coffee worldwide. The company runs thousands of stores offering coffee beverages, tea, food products, and ready-to-drink beverages. Starbucks also distributes products through grocery stores and licensed retail partners. The brand portfolio includes Starbucks, Teavana, Seattle’s Best Coffee, Starbucks Reserve, and Princi.",
+  ceo: "Brian R. Niccol",
+  sector: "Consumer Cyclical",
+  country: "US",
+  fullTimeEmployees: "361000",
+  phone: "206 447 1575",
+  address: "2401 Utah Avenue South",
+  city: "Seattle",
+  state: "WA",
+  zip: "98134",
+  image: "https://images.financialmodelingprep.com/symbol/SBUX.png",
+  ipoDate: "1992-06-26",
+  defaultImage: false,
+  isEtf: false,
+  isActivelyTrading: true,
+  isAdr: false,
+  isFund: false,
+
+  metrics: {
+    revenueGrowth1Y: 0.027869151541621395,
+    revenueCagr3Y: 0.048597955054982656,
+    netMargin: 0.049924161745248004,
+    roe: -0.22928142677173136,
+    roa: 0.05797680802755804,
+    currentRatio: 0.7230177074355559,
+    debtEquity: -3.2867499938245683,
+    fcf: 2442000000,
+    peRatio: null
+  },
+
+  scores: {
+    global: 42,
+    growth: 40,
+    profitability: 24,
+    cashflow: 83,
+    balance: 40,
+    valuation: 33,
+    quality: 30
+  },
+
+  strengths: [
+    "Free cash flow positif.",
+    "Niveau d’endettement raisonnable.",
+    "Les données actuelles ne mettent pas en évidence davantage de points forts majeurs."
+  ],
+
+  weaknesses: [
+    "Marge nette faible.",
+    "ROE modeste.",
+    "Liquidité court terme tendue."
+  ],
+
+  risks: [
+    "Tension possible sur les engagements court terme.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles.",
+    "Aucun risque critique supplémentaire n’est visible avec les données disponibles."
+  ],
+
+  verdict: "Cette entreprise obtient un score de 42/100, ce qui correspond à un profil fragile. Pour un débutant, il faut surtout regarder trois choses : la croissance du chiffre d’affaires, la capacité à générer du cash, et le niveau de dette. Une bonne entreprise reste un mauvais investissement si elle est achetée trop cher.",
+  source: "api"
 }
 };
