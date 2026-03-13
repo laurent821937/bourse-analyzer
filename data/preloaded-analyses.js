@@ -1398,17 +1398,22 @@ function normalize(value = "") {
     .replace(/[^a-z0-9]+/g, "");
 }
 
-function getAllPreloadedAnalyses() {
-  return PRELOADED_ANALYSES;
+function normalize(value = "") {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "");
 }
 
-function getPreloadedBySymbol(symbol) {
+export function getPreloadedBySymbol(symbol) {
   if (!symbol) return null;
   const clean = String(symbol).trim().toUpperCase();
   return PRELOADED_ANALYSES[clean] || null;
 }
 
-function findPreloadedAnalysis(query) {
+export function findPreloadedAnalysis(query) {
   if (!query) return null;
 
   const raw = String(query).trim();
@@ -1424,9 +1429,11 @@ function findPreloadedAnalysis(query) {
     const haystack = [
       item.symbol,
       item.companyName,
-      item.industry,
       item.sector,
-      item.website
+      item.industry,
+      item.website,
+      item.exchange,
+      item.exchangeFullName
     ]
       .filter(Boolean)
       .map(normalize)
@@ -1440,25 +1447,19 @@ function findPreloadedAnalysis(query) {
   return null;
 }
 
-function listPreloadedCompanies() {
+export function listPreloadedCompanies() {
   return Object.values(PRELOADED_ANALYSES).map((item) => ({
     symbol: item.symbol,
     companyName: item.companyName,
     sector: item.sector || "",
     industry: item.industry || "",
+    exchange: item.exchange || "",
     image: item.image || "",
     score: item.scores?.global ?? null,
-    source: item.source || "preloaded",
     verdict: item.verdict || "",
     price: item.price ?? null,
-    marketCap: item.marketCap ?? null
+    marketCap: item.marketCap ?? null,
+    source: "preloaded"
   }));
 }
-
-module.exports = {
-  PRELOADED_ANALYSES,
-  getAllPreloadedAnalyses,
-  getPreloadedBySymbol,
-  findPreloadedAnalysis,
-  listPreloadedCompanies
 };
